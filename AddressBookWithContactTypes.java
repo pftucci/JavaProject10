@@ -39,19 +39,15 @@ public class AddressBookWithContactTypes {
 	
 	public static void menu() {
 		if (contactsInAddressBook.isEmpty()) {
-			System.out.println("There are no contacts stored.");
+			System.out.println("There are no contacts stored.\n");
 		} else {
 			System.out.println("\nAddress Book: ");
 			for (AbstractContact c:contactsInAddressBook){
-				if (c instanceof PersonalContact) {
-					System.out.println(((PersonalContact) c).getStringToPrint()); 
-				} else if (c instanceof BusinessContact) {
-					System.out.println(((BusinessContact) c).getStringToPrint());
-				}
+				System.out.println(c.getStringToPrint() + "\n");
 			}
 		}
 		
-		System.out.println("\nWhat would you like to do? Select an option from the menu.");
+		System.out.println("What would you like to do? Select an option from the menu.");
 		System.out.println("1) Add a new contact");
 		System.out.println("2) Edit an existing contact");
 		System.out.println("3) Delete an existing contact");
@@ -65,7 +61,6 @@ public class AddressBookWithContactTypes {
 		String contactWhatsAppUsername = null;
 		String contactCompanyName = null;
 		String contactLinkedInUsername = null;
-		
 		
 		System.out.println("What type of contact would you like to create?");
 		System.out.println("1) Personal");
@@ -142,7 +137,6 @@ public class AddressBookWithContactTypes {
 			editOption = input.nextInt();
 			input.nextLine();
 	
-			
 			switch (editOption) {
 				case 1:
 					selectedContact.getName();
@@ -208,16 +202,12 @@ public class AddressBookWithContactTypes {
 	}
 	
 	public static void deleteAContact(Scanner input) {
-		System.out.println("\nWhich contact would you like to delete? Enter its index.");
+		System.out.println("Which contact would you like to delete? Enter its index.");
 		int contactToDelete = input.nextInt();
 		
 		AbstractContact selectedContact2 = contactsInAddressBook.get(contactToDelete);
 		
-		if (selectedContact2 instanceof PersonalContact) {
-			System.out.println("Are you sure you want to delete the contact below?\n" + ((PersonalContact) selectedContact2).getStringToPrint());
-		} else if (selectedContact2 instanceof BusinessContact) {
-			System.out.println("Are you sure you want to delete the contact below?\n" + ((BusinessContact) selectedContact2).getStringToPrint());
-		}
+		System.out.println("Are you sure you want to delete the contact below?\n" + selectedContact2.getStringToPrint());
 		System.out.println("1) Yes");
 		System.out.println("2) No");
 		int deleteConfirmation = input.nextInt();
@@ -231,12 +221,9 @@ public class AddressBookWithContactTypes {
 	public static void displayAllContacts() {
 		System.out.println("Here are your contacts: ");
 		for (AbstractContact c:contactsInAddressBook) {
-			if (c instanceof PersonalContact) {
-				System.out.println(((PersonalContact) c).getStringToPrint());
-			} else if (c instanceof BusinessContact) {
-				System.out.println(((BusinessContact) c).getStringToPrint());
-			}
+			System.out.println(c.getStringToPrint() + "\n");
 		}	
+		
 	}
-
+	
 }
